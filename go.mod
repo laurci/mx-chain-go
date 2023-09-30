@@ -32,6 +32,8 @@ require (
 	gopkg.in/go-playground/validator.v8 v8.18.2
 )
 
+replace github.com/multiversx/mx-chain-vm-v1_4-go => ../mx-chain-vm-v1_4-go
+
 require (
 	github.com/benbjohnson/clock v1.3.5 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
@@ -48,6 +50,7 @@ require (
 	github.com/decred/dcrd/dcrec/secp256k1/v4 v4.2.0 // indirect
 	github.com/denisbrodbeck/machineid v1.0.1 // indirect
 	github.com/docker/go-units v0.5.0 // indirect
+	github.com/ebitengine/purego v0.5.0 // indirect
 	github.com/elastic/go-elasticsearch/v7 v7.12.0 // indirect
 	github.com/elastic/gosigar v0.14.2 // indirect
 	github.com/flynn/noise v1.0.0 // indirect

@@ -36,6 +36,22 @@ func TestAllowNonFloatingPointSC(t *testing.T) {
 	require.Equal(t, vmcommon.Ok, vmOutput.ReturnCode)
 	fmt.Printf("VM Return Code: %s\n", vmOutput.ReturnCode)
 }
+func TestPlugins(t *testing.T) {
+	wasmvm, scAddress := deploy(t, "../testdata/plugins/plugins.wasm")
+	defer closeVM(wasmvm)
+
+	arguments := make([][]byte, 0)
+	vmInput := defaultVMInput(arguments)
+	vmInput.CallerAddr = ownerAddressBytes
+
+	callInput := makeCallInput(scAddress, "test_1", vmInput)
+	vmOutput, err := wasmvm.RunSmartContractCall(callInput)
+	require.Nil(t, err)
+
+	fmt.Printf("VM Return message: %s\n", vmOutput.ReturnMessage)
+	fmt.Printf("VM Return Code: %s\n", vmOutput.ReturnCode)
+	require.Equal(t, vmcommon.Ok, vmOutput.ReturnCode)
+}
 
 func TestDisallowFloatingPointSC(t *testing.T) {
 	wasmvm, scAddress := deploy(t, "../testdata/floating_point/fp.wasm")
